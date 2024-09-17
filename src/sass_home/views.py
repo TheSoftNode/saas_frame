@@ -1,20 +1,15 @@
-# Import the necessary modules
 from django.shortcuts import render
 from django.conf import settings
 
-# Import the PageVisit model to track page visits
 from visits.models import PageVisit
 
-# View for the homepage
 def home_view(request, *args, **kwargs):
     # Check if the user is authenticated, and if so, print their first name to the console (for debugging purposes)
     if request.user.is_authenticated:
         print(request.user.first_name)
     
-    # Call the about_view and return its response
     return about_view(request, *args, **kwargs)
 
-# View for the 'About' page
 def about_view(request, *args, **kwargs):
     # Query all PageVisit entries
     qs = PageVisit.objects.all()
@@ -26,10 +21,8 @@ def about_view(request, *args, **kwargs):
     try:
         percent = (page_qs.count() * 100.0) / qs.count()
     except:
-        # If there's an exception (e.g., division by zero), set percent to 0
         percent = 0
     
-    # Page title and template name
     my_title = "My Page"
     html_template = "home.html"
     
@@ -44,5 +37,4 @@ def about_view(request, *args, **kwargs):
     # Create a new PageVisit entry for the current page visit
     PageVisit.objects.create(path=request.path)
     
-    # Render the template with the context
     return render(request, html_template, my_context)
