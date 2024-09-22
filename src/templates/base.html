@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>
+      {% block head_title %}
+        SaaS
+      {% endblock %}
+    </title>
+    {% include './base/css.html' %}
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> {% endcomment %}
+  </head>
 
-<head>
-    <title>{% block head_title %}SaaS{% endblock head_title %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-</head>
-
-<body>
+  <body>
+    {% include 'nav/navbar.html' %}
     {% block content %}
-        replace me
-    {% endblock content %}
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-</body>
-
+    {% endblock %}
+    {% include './base/js.html' %}
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> {% endcomment %}
+  </body>
 </html>

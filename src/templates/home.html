@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
+{% block head_title %}
+    {{ page_title }} - {{ block.super }}
+{% endblock head_title %}
 
-    <body>
-        <h1>This is just a test</h1>
-    </body>
+{% block content %}
+<h1>{{ page_title }}</h1>
+<p>Hello again!</p>
 
-</html>
+{% comment %} {% include 'snippets/welcome-user-msg.html' %} {% endcomment %}
+
+<P> Page visits: {{ page_visit_count }} </p>
+<P> Percent: {{ percent }} </p>
+<P> Total visits: {{ total_visit_count }} </p>
+{% endblock content%}
